@@ -1,0 +1,28 @@
+version: "3.9"
+name: "calls"
+
+services:
+  back:
+    build: ./services/backend
+    restart: unless-stopped
+    ports:
+      - "8079:8080"
+    expose:
+      - 8080
+    links:
+      - redis
+    command: python3 -u -m uvicorn main:app --host 0.0.0.0 --port 8080
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    expose:
+      - 6379
+    ports:
+      - "6377:6379"
+    volumes:
+      - "redis:/data/cache"
+
+volumes:
+  users-postgres:
+  redis:

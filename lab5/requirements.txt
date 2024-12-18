@@ -1,0 +1,10 @@
+charset-normalizer
+pyTelegramBotAPI
+requests
+tortoise_orm
+tortoise_orm[asyncpg]
+urllib3
+pydantic
+secret
+python-decouple
+aiohttp
